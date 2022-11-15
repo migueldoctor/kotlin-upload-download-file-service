@@ -18,7 +18,7 @@ class UploadFileController {
 
     private val log = KotlinLogging.logger {}
 
-    // 1) We inject the Service dependency
+    // 1) We inject the Service dependencyls
     @Autowired
     lateinit var uploadFileService:UploadFileService
 
@@ -28,7 +28,6 @@ class UploadFileController {
     fun uploadFile(@RequestParam("file") file: MultipartFile): ResponseEntity<Response> {
 
        log.info { "Requested uploading file: ${file.originalFilename}" }
-
         // It invokes the service operation upload and depending on if it went well
         // the file is stored on the file system or an error message is sent back to the user
        return when(uploadFileService.upload(file).getOrDefault(false)) {
